@@ -34,8 +34,8 @@ healplayerKeybind = "F2" -- Key to heal player
 
 menuName = "SkidMenuRemastered" -- The name of the menu
 version = "1.0" -- Keep it simple
-theme = "infamous" -- Feel free to make your own
-themes = {"infamous", "basic", "dark", "skid"}-- Add themes here if you want them to be in the theme selector
+theme = "rgb" -- Feel free to make your own
+themes = {"infamous", "basic", "dark", "rgb"}-- Add themes here if you want them to be in the theme selector
 mpMessage = false -- Whether or not to use the big mp message
 startMessage = "∑ ~b~Welcome, " .. GetPlayerName(PlayerId()) .. "." -- The message that is shown when the menu is opened
 subMessage = "~w~Press ~b~" .. menuKeybind .. "~w~ to open the menu." -- subtitle of opening message
@@ -2558,102 +2558,145 @@ function WarMenu.PopupWindow(x, y, title)
 end
 
 -- Get colors from https://www.hexcolortool.com/
-function WarMenu.SetTheme(id, theme)
-    if theme == "basic" then
-        WarMenu.SetMenuBackgroundColor(id, 81, 231, 251, 125)
-        WarMenu.SetTitleBackgroundColor(id, 92, 212, 249, 80)
-        WarMenu.SetTitleColor(id, 92, 212, 249, 230)
-        WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
-        WarMenu.SetMenuFocusColor(id, 40, 40, 40, 230)
-        WarMenu.SetFont(id, 7)
-        WarMenu.SetMenuX(id, .75)-- [0.0..1.0] top left corner
-        WarMenu.SetMenuY(id, .1)-- [0.0..1.0] top
-        WarMenu.SetMenuWidth(id, 0.23)-- 0.23
-        WarMenu.SetMaxOptionCount(id, 12)-- 10
-        
-        titleHeight = 0.11 --0.11
-        titleXOffset = 0.5 -- 0.5
-        titleYOffset = 0.03 --0.03
-        titleSpacing = 2 -- 2
-        buttonHeight = 0.038 --0.038
-        buttonScale = 0.365 --0.365
-        buttonTextXOffset = 0.005 --0.005
-        buttonTextYOffset = 0.005 --0.005
-        
-        themecolor = '~b~'
-        themearrow = "+"
-    elseif theme == "dark" then
-        WarMenu.SetMenuBackgroundColor(id, 180, 80, 80, 125)
-        WarMenu.SetTitleBackgroundColor(id, 180, 80, 80, 90)
-        WarMenu.SetTitleColor(id, 180, 80, 80, 230)
-        WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
-        WarMenu.SetMenuFocusColor(id, 40, 40, 40, 230)
-        WarMenu.SetFont(id, 1)
-        WarMenu.SetMenuX(id, .75)
-        WarMenu.SetMenuY(id, .1)
-        WarMenu.SetMenuWidth(id, 0.23)-- 0.23
-        WarMenu.SetMaxOptionCount(id, 12)-- 10
-        
-        titleHeight = 0.11 --0.11
-        titleXOffset = 0.5 -- 0.5
-        titleYOffset = 0.03 --0.03
-        titleSpacing = 2 -- 2
-        buttonHeight = 0.038 --0.038
-        buttonScale = 0.365 --0.365
-        buttonTextXOffset = 0.005 --0.005
-        buttonTextYOffset = 0.005 --0.005
-        
-        themecolor = '~r~'
-        themearrow = ">"
-    elseif theme == "skid" then
-        WarMenu.SetMenuBackgroundColor(id, 5, 160, 1, 125)
-        WarMenu.SetTitleBackgroundColor(id, 5, 233, 1, 255)
-        WarMenu.SetTitleColor(id, 5, 233, 1, 200)
-        WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
-        WarMenu.SetFont(id, 0)
-        WarMenu.SetMenuX(id, .75)
-        WarMenu.SetMenuY(id, .1)
-        WarMenu.SetMenuWidth(id, 0.23)-- 0.23
-        WarMenu.SetMaxOptionCount(id, 12)-- 10
-        
-        titleHeight = 0.11 --0.11
-        titleXOffset = 0.5 -- 0.5
-        titleYOffset = 0.03 --0.03
-        titleSpacing = 2 -- 2
-        buttonHeight = 0.038 --0.038
-        buttonScale = 0.365 --0.365
-        buttonTextXOffset = 0.005 --0.005
-        buttonTextYOffset = 0.005 --0.005
-        
-        themecolor = '~u~'
-        themearrow = "~u~>"
-    elseif theme == "infamous" then
-        WarMenu.SetMenuBackgroundColor(id, 38, 38, 38, 80)
-        WarMenu.SetTitleBackgroundColor(id, 92, 212, 249, 170)
-        WarMenu.SetTitleColor(id, 240, 240, 240, 255)
-        WarMenu.SetMenuSubTextColor(id, 240, 240, 240, 255)
-        WarMenu.SetMenuFocusBackgroundColor(id, 100, 220, 250, 180)
-        WarMenu.SetFont(id, 4)
-        WarMenu.SetMenuX(id, .725)
-        WarMenu.SetMenuY(id, .1)
-        WarMenu.SetMenuWidth(id, 0.25)-- 0.23
-        WarMenu.SetMaxOptionCount(id, 12)-- 10
-        
-        titleHeight = 0.07 --0.11
-        titleXOffset = 0.2 -- 0.5
-        titleYOffset = 0.005 --0.03
-        titleScale = 0.7 -- 1.0
-        titleSpacing = 1.5
-        buttonHeight = 0.033 --0.038
-        buttonScale = 0.360 --0.365
-        buttonTextXOffset = 0.003 --0.005
-        buttonTextYOffset = 0.0025 --0.005
-        
-        themecolor = "~s~"
-        themearrow = ">>"
-    end
-end
-
+> rgb = {r = 64, g = 64, b = 64}
+> 
+> function WarMenu.SetTheme(id, theme)
+>     if theme == "basic" then
+>         WarMenu.SetMenuBackgroundColor(id, 81, 231, 251, 125)
+>         WarMenu.SetTitleBackgroundColor(id, 92, 212, 249, 80)
+>         WarMenu.SetTitleColor(id, 92, 212, 249, 230)
+>         WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
+>         WarMenu.SetMenuFocusColor(id, 40, 40, 40, 230)
+>         WarMenu.SetFont(id, 7)
+>         WarMenu.SetMenuX(id, .75)-- [0.0..1.0] top left corner
+>         WarMenu.SetMenuY(id, .1)-- [0.0..1.0] top
+>         WarMenu.SetMenuWidth(id, 0.23)-- 0.23
+>         WarMenu.SetMaxOptionCount(id, 12)-- 10
+>         
+>         titleHeight = 0.11 --0.11
+>         titleXOffset = 0.5 -- 0.5
+>         titleYOffset = 0.03 --0.03
+>         titleSpacing = 2 -- 2
+>         buttonHeight = 0.038 --0.038
+>         buttonScale = 0.365 --0.365
+>         buttonTextXOffset = 0.005 --0.005
+>         buttonTextYOffset = 0.005 --0.005
+>         
+>         themecolor = '~b~'
+>         themearrow = "+"
+>     elseif theme == "dark" then
+>         WarMenu.SetMenuBackgroundColor(id, 180, 80, 80, 125)
+>         WarMenu.SetTitleBackgroundColor(id, 180, 80, 80, 90)
+>         WarMenu.SetTitleColor(id, 180, 80, 80, 230)
+>         WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
+>         WarMenu.SetMenuFocusColor(id, 40, 40, 40, 230)
+>         WarMenu.SetFont(id, 1)
+>         WarMenu.SetMenuX(id, .75)
+>         WarMenu.SetMenuY(id, .1)
+>         WarMenu.SetMenuWidth(id, 0.23)-- 0.23
+>         WarMenu.SetMaxOptionCount(id, 12)-- 10
+>         
+>         titleHeight = 0.11 --0.11
+>         titleXOffset = 0.5 -- 0.5
+>         titleYOffset = 0.03 --0.03
+>         titleSpacing = 2 -- 2
+>         buttonHeight = 0.038 --0.038
+>         buttonScale = 0.365 --0.365
+>         buttonTextXOffset = 0.005 --0.005
+>         buttonTextYOffset = 0.005 --0.005
+>         
+>         themecolor = '~r~'
+>         themearrow = ">"
+>     elseif theme == "skid" then
+>         WarMenu.SetMenuBackgroundColor(id, 5, 160, 1, 125)
+>         WarMenu.SetTitleBackgroundColor(id, 5, 233, 1, 255)
+>         WarMenu.SetTitleColor(id, 5, 233, 1, 200)
+>         WarMenu.SetMenuSubTextColor(id, 255, 255, 255, 230)
+>         WarMenu.SetFont(id, 0)
+>         WarMenu.SetMenuX(id, .75)
+>         WarMenu.SetMenuY(id, .1)
+>         WarMenu.SetMenuWidth(id, 0.23)-- 0.23
+>         WarMenu.SetMaxOptionCount(id, 12)-- 10
+>         
+>         titleHeight = 0.11 --0.11
+>         titleXOffset = 0.5 -- 0.5
+>         titleYOffset = 0.03 --0.03
+>         titleSpacing = 2 -- 2
+>         buttonHeight = 0.038 --0.038
+>         buttonScale = 0.365 --0.365
+>         buttonTextXOffset = 0.005 --0.005
+>         buttonTextYOffset = 0.005 --0.005
+>         
+>         themecolor = '~u~'
+>         themearrow = "~u~>"
+> 	elseif theme == "infamous" then
+>         WarMenu.SetMenuBackgroundColor(id, 38, 38, 38, 80)
+>         WarMenu.SetTitleBackgroundColor(id, 92, 212, 249, 170)
+>         WarMenu.SetTitleColor(id, 240, 240, 240, 255)
+>         WarMenu.SetMenuSubTextColor(id, 240, 240, 240, 255)
+>         WarMenu.SetMenuFocusBackgroundColor(id, 100, 220, 250, 180)
+>         WarMenu.SetFont(id, 4)
+>         WarMenu.SetMenuX(id, .725)
+>         WarMenu.SetMenuY(id, .1)
+>         WarMenu.SetMenuWidth(id, 0.25)-- 0.23
+>         WarMenu.SetMaxOptionCount(id, 12)-- 10
+>         
+>         titleHeight = 0.07 --0.11
+>         titleXOffset = 0.2 -- 0.5
+>         titleYOffset = 0.005 --0.03
+>         titleScale = 0.7 -- 1.0
+>         titleSpacing = 1.5
+>         buttonHeight = 0.033 --0.038
+>         buttonScale = 0.360 --0.365
+>         buttonTextXOffset = 0.003 --0.005
+>         buttonTextYOffset = 0.0025 --0.005
+>         
+>         themecolor = "~s~"
+>         themearrow = ">>"
+> 	elseif theme == "rgb" then
+>         Citizen.CreateThread(function()
+> 	        while true do
+> 	        	Wait(1)
+> 	            rgb = RGBRainbow(1)
+>                 WarMenu.SetMenuBackgroundColor(id, 38, 38, 38, 80)
+>                 WarMenu.SetTitleBackgroundColor(id, 92, 212, 249, 170)
+>                 WarMenu.SetTitleColor(id, rgb.r, rgb.g, rgb.b, alpha)
+>                 WarMenu.SetMenuSubTextColor(id, 240, 240, 240, 255)
+>                 WarMenu.SetMenuFocusBackgroundColor(id, rgb.r, rgb.g, rgb.b, alpha)
+>                 WarMenu.SetFont(id, 4)
+>                 WarMenu.SetMenuX(id, .725)
+>                 WarMenu.SetMenuY(id, .1)
+>                 WarMenu.SetMenuWidth(id, 0.25)-- 0.23
+>                 WarMenu.SetMaxOptionCount(id, 12)-- 10
+>         
+>                 titleHeight = 0.07 --0.11
+>                 titleXOffset = 0.2 -- 0.5
+>                 titleYOffset = 0.005 --0.03
+>                 titleScale = 0.7 -- 1.0
+>                 titleSpacing = 1.5
+>                 buttonHeight = 0.033 --0.038
+>                 buttonScale = 0.360 --0.365
+>                 buttonTextXOffset = 0.003 --0.005
+>                 buttonTextYOffset = 0.0025 --0.005
+>         
+>                 themecolor = "~s~"
+>                 themearrow = ">>"
+> 			end
+> 		end)
+> 	end
+> end
+> 
+> function RGBRainbow(frequency)
+>     local result = {}
+>     local curtime = GetGameTimer() / 1500
+> 
+>     result.r = math.floor(math.sin(curtime * frequency + 0) * 127 + 128)
+>     result.g = math.floor(math.sin(curtime * frequency + 2) * 127 + 128)
+>     result.b = math.floor(math.sin(curtime * frequency + 4) * 127 + 128)
+> 
+>     return result
+> end
+> 
 function WarMenu.InitializeTheme()
     for i = 1, #menulist do
         WarMenu.SetTheme(menulist[i], theme)
