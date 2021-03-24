@@ -112,9 +112,4 @@ Other ( WIP )
 Credits:
 
 Developers:
-
-Joeyarrabi#2508 - Main Developer
-
-Kirtle#0498 - Secondary Developer
-
-Erwin Rommel#4860 - Tertiary Developer and Maintenance
+Main developer: Bobby
