@@ -115,7 +115,7 @@ menulist = {
         'planes',
         'service',
         'commercial',
-        'customvehicles'
+        'customvehicles',
         
         
         -- WORLD SUBMENUS
@@ -1186,8 +1186,8 @@ local commercial = {
     "FREIGHTGRAIN",
     "METROTRAIN",
     "TANKERCAR"
-
 }
+
 local customvehicles = {
     "DIVO"
   
